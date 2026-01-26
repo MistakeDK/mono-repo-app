@@ -5,6 +5,12 @@
   "references": [
     {
       "path": "./apps/todo-app"
+    },
+    {
+      "path": "./libs/ui-components"
+    },
+    {
+      "path": "./libs/utils"
     }
   ]
 }

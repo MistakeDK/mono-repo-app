@@ -1,4 +1,6 @@
 packages:
-  - "apps/*"
-
+  - 'apps/*'
+  - 'UI'
+  - 'libs/*'
 autoInstallPeers: true
+ignoreWorkspaceRootCheck: true
