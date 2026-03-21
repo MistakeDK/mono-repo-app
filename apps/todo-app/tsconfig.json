@@ -46,8 +46,6 @@
     {
       "path": "../../libs/ui-components"
     },
-    {
-      "path": "../../libs/utils"
-    }
+    { "path": "../../libs/utils" }
   ]
 }
