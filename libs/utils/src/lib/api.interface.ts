@@ -22,9 +22,3 @@ export type IApiRequest<P = null, Q = null, B = null> = BaseRequestConfig &
   WithPath<P> &
   WithQuery<Q> &
   WithBody<B>;
-
-export type ApiResponse<T> = {
-  data: T;
-  status: number;
-  message: string;
-};

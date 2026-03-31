@@ -1,0 +1,76 @@
+{
+  "name": "@mono/telegram-bot",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "targets": {
+      "prune-lockfile": {
+        "dependsOn": [
+          "build"
+        ],
+        "cache": true,
+        "executor": "@nx/js:prune-lockfile",
+        "outputs": [
+          "{workspaceRoot}/apps/telegram-bot/dist/package.json",
+          "{workspaceRoot}/apps/telegram-bot/dist/pnpm-lock.yaml"
+        ],
+        "options": {
+          "buildTarget": "build"
+        }
+      },
+      "copy-workspace-modules": {
+        "dependsOn": [
+          "build"
+        ],
+        "cache": true,
+        "outputs": [
+          "{workspaceRoot}/apps/telegram-bot/dist/workspace_modules"
+        ],
+        "executor": "@nx/js:copy-workspace-modules",
+        "options": {
+          "buildTarget": "build"
+        }
+      },
+      "prune": {
+        "dependsOn": [
+          "prune-lockfile",
+          "copy-workspace-modules"
+        ],
+        "executor": "nx:noop"
+      },
+      "serve": {
+        "continuous": true,
+        "executor": "@nx/js:node",
+        "defaultConfiguration": "development",
+        "dependsOn": [
+          "build"
+        ],
+        "options": {
+          "buildTarget": "@mono/telegram-bot:build",
+          "runBuildTargetDependencies": false
+        },
+        "configurations": {
+          "development": {
+            "buildTarget": "@mono/telegram-bot:build:development"
+          },
+          "production": {
+            "buildTarget": "@mono/telegram-bot:build:production"
+          }
+        }
+      }
+    }
+  },
+  "dependencies": {
+    "@lightpanda/browser": "^1.2.0",
+    "@mono/utils": "workspace:*",
+    "@supabase/supabase-js": "^2.93.3",
+    "dotenv": "^17.3.1",
+    "express": "^4.21.2",
+    "node-telegram-bot-api": "^0.67.0"
+  },
+  "devDependencies": {
+    "@types/node-cron": "^3.0.11",
+    "@types/node-telegram-bot-api": "^0.64.14",
+    "node-cron": "^4.2.1"
+  }
+}
