@@ -3,7 +3,10 @@ import * as dotenv from 'dotenv';
 import * as cron from 'node-cron';
 import VNIndexService from './VNIndex.service';
 import { IVNIndexSummary } from '../types/chartData.interface';
-
+import {
+  createOrUpdateUserInfo,
+  getUserInfoByCondition,
+} from '../service/supabase.service';
 // Load environment variables early
 dotenv.config();
 
@@ -11,7 +14,6 @@ const token = process.env.TELEGRAM_BOT_TOKEN || '';
 
 // Memory store
 let bot: TelegramBot | null = null;
-const activeUsers = new Set<number>();
 
 const sendVNIndexUpdate = async (chatId: number) => {
   const response = await VNIndexService.getValueVNIndex();
@@ -66,14 +68,15 @@ if (token) {
   // Simple command listening
   bot.onText(/\/start/, (msg) => {
     const chatId = msg.chat.id;
-    activeUsers.add(chatId);
-    console.log({ activeUsers });
     bot?.sendMessage(
       chatId,
       'Welcome! I can provide you with the latest VN-INDEX market data.\n\nClick the button below or use /info to get started!',
       {
         reply_markup: {
-          keyboard: [[{ text: 'VNIndex Info' }]],
+          keyboard: [
+            [{ text: 'VNIndex Info' }],
+            [{ text: 'Register VNIndex Info' }],
+          ],
           resize_keyboard: true,
           one_time_keyboard: false,
         },
@@ -84,17 +87,33 @@ if (token) {
   // Handle both /info and "VNIndex Info" button
   bot.onText(/\/info|^VNIndex Info$/, async (msg) => {
     const chatId = msg.chat.id;
-    activeUsers.add(chatId); // Auto-add to daily update list
     await sendVNIndexUpdate(chatId);
   });
 
+  bot.onText(/Register VNIndex Info/, async (msg) => {
+    const chatId = msg.chat.id;
+    await createOrUpdateUserInfo(chatId, { isRegisterGetInfo: true });
+    bot?.sendMessage(
+      chatId,
+      '✅ You have successfully registered for daily VN-INDEX updates at 2:00 PM!',
+    );
+  });
+
   /**
-   * Schedule daily report at 6:00 AM
+   * Schedule daily report at 2:00 PM
    */
-  cron.schedule('0 6 * * *', async () => {
+  cron.schedule('00 14 * * *', async () => {
     console.log('>> Executing scheduled daily VN-INDEX update...');
-    for (const chatId of activeUsers) {
-      await sendVNIndexUpdate(chatId);
+    const users = await getUserInfoByCondition(
+      'userInfo->isRegisterGetInfo',
+      true,
+    );
+
+    if (users && users.length > 0) {
+      console.log(`>> Sending updates to ${users.length} registered users...`);
+      for (const user of users) {
+        await sendVNIndexUpdate(user.id);
+      }
     }
   });
 

@@ -6,10 +6,10 @@ import * as path from 'path';
 dotenv.config({ path: path.resolve(__dirname, '../../.env.local') });
 
 const supabaseUrl = process.env.SUPABASE_URL || '';
-const supabaseAnonKey = process.env.SUPABASE_ANON_KEY || '';
+const supabaseSecretKey = process.env.SUPABASE_SECRET_KEY || '';
 
-if (!supabaseUrl || !supabaseAnonKey) {
-  console.error('Supabase URL or Anon Key is missing from env variables.');
+if (!supabaseUrl || !supabaseSecretKey) {
+  console.error('Supabase URL or Secret Key is missing from env variables.');
 }
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+export const supabase = createClient(supabaseUrl, supabaseSecretKey);
