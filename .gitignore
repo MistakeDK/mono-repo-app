@@ -28,6 +28,10 @@ node_modules
 .agents/*
 skills-lock.json
 
+# Document
+Deployment-Flow.md
+DESIGN.md
+
 # misc
 /.sass-cache
 /connect.lock
@@ -50,3 +54,4 @@ Thumbs.db
 # Next.js
 .next
 out
+

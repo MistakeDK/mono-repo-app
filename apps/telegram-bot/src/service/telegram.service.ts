@@ -76,6 +76,7 @@ if (token) {
           keyboard: [
             [{ text: 'VNIndex Info' }],
             [{ text: 'Register VNIndex Info' }],
+            [{ text: 'UnRegister VNIndex Info' }],
           ],
           resize_keyboard: true,
           one_time_keyboard: false,
@@ -96,6 +97,15 @@ if (token) {
     bot?.sendMessage(
       chatId,
       '✅ You have successfully registered for daily VN-INDEX updates at 2:00 PM!',
+    );
+  });
+
+  bot.onText(/UnRegister VNIndex Info/, async (msg) => {
+    const chatId = msg.chat.id;
+    await createOrUpdateUserInfo(chatId, { isRegisterGetInfo: false });
+    bot?.sendMessage(
+      chatId,
+      '❌ You have successfully unregistered from daily VN-INDEX updates.',
     );
   });
 
