@@ -11,8 +11,8 @@
     "prefix": ""
   },
   "aliases": {
-    "components": "@mono/ui-components/components",
-    "utils": "@mono/ui-components/utils"
+    "components": "libs/ui-components/src/components",
+    "utils": "libs/ui-components/src/utils"
   },
   "iconLibrary": "lucide"
 }

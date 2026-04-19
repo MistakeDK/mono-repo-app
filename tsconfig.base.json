@@ -14,12 +14,12 @@
     "noImplicitOverride": true,
     "noImplicitReturns": true,
     "noUnusedLocals": true,
-    "paths": {
-      "@mono/ui-components": ["libs/ui-components/src/index.ts"],
-      "@mono/ui-components/*": ["libs/ui-components/src/*"],
-      "@mono/utils": ["libs/utils/src/index.ts"],
-      "@/*": ["./*"]
-    },
+    // "paths": {
+    //   "@mono/ui-components": ["libs/ui-components/src/index.ts"],
+    //   "@mono/ui-components/*": ["libs/ui-components/src/*"],
+    //   "@mono/utils": ["libs/utils/src/index.ts"],
+    //   "@/*": ["./*"]
+    // },
     "skipLibCheck": true,
     "strict": true,
     "target": "es2022",

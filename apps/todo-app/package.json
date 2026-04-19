@@ -3,6 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
+    "@mono/utils": "workspace:*",
+    "@mono/ui-components":"workspace:*",
     "@hookform/resolvers": "^5.2.2",
     "@supabase/supabase-js": "^2.93.3",
     "@tanstack/react-query-devtools": "^5.91.3",
