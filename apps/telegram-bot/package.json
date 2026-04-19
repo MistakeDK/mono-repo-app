@@ -61,7 +61,6 @@
     }
   },
   "dependencies": {
-    "@lightpanda/browser": "^1.2.0",
     "@mono/utils": "workspace:*",
     "@supabase/supabase-js": "^2.93.3",
     "dotenv": "^17.3.1",
