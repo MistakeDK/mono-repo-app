@@ -4,7 +4,7 @@
   "files": [],
   "references": [
     {
-      "path": "./apps/todo-app"
+      "path": "./apps/developer-toolkit"
     },
     {
       "path": "./libs/ui-components"

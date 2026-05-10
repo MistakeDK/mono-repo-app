@@ -26,8 +26,8 @@
     "src/**/*.tsx",
     "src/**/*.js",
     "src/**/*.jsx",
-    "../../apps/todo-app/.next/types/**/*.ts",
-    "../../dist/apps/todo-app/.next/types/**/*.ts",
+    "../../apps/developer-toolkit/.next/types/**/*.ts",
+    "../../dist/apps/developer-toolkit/.next/types/**/*.ts",
     "next-env.d.ts"
   ],
   "exclude": [
@@ -44,9 +44,7 @@
     "eslint.config.mjs"
   ],
   "references": [
-    {
-      "path": "../../libs/ui-components"
-    },
+    { "path": "../../libs/ui-components" },
     { "path": "../../libs/utils" }
   ]
 }
