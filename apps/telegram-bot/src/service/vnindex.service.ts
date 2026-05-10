@@ -1,7 +1,7 @@
 import { ApiResponse } from '@mono/utils';
 import { IVNIndexSummary } from '../types/chartData.interface';
 import axios from 'axios';
-import { mapVNIndex } from '../utils/commom';
+import { mapVNIndex } from '../utils/common';
 
 const getValueVNIndex = async (): Promise<ApiResponse<IVNIndexSummary>> => {
   try {

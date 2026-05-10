@@ -5,11 +5,12 @@
 
 import express from 'express';
 import * as path from 'path';
-import { notifyVNIndex } from './controller/chat.controller';
-
-import './service/telegram.service';
+import { notifyVNIndex } from './controller/vnindex.controller';
+import { initTelegramBot } from './bot/telegram.bot';
 
 const app = express();
+
+initTelegramBot();
 
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
