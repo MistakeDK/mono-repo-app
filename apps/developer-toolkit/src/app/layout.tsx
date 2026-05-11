@@ -1,3 +1,4 @@
+import { DeveloperToolkitShell } from '../components/developer-toolkit/developer-toolkit-shell';
 import './globals.css';
 
 export default function RootLayout({
@@ -6,7 +7,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="vi">
+    <html lang="en" className="dark">
       <head>
         <meta
           name="viewport"
@@ -14,7 +15,9 @@ export default function RootLayout({
         />
         <link rel="icon" href="/favicon.ico" />
       </head>
-      <body className="light">{children}</body>
+      <body>
+        <DeveloperToolkitShell>{children}</DeveloperToolkitShell>
+      </body>
     </html>
   );
 }

@@ -1,11 +1,5 @@
-import { Button, Card } from '@mono/ui-components';
+import { redirect } from 'next/navigation';
 
 export default function Index() {
-  return (
-    <div>
-      <Card>
-        <Button />
-      </Card>
-    </div>
-  );
+  redirect('/jwt-decode');
 }
