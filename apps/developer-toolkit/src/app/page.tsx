@@ -1,5 +1,5 @@
-import { redirect } from 'next/navigation';
+import { JwtDecoderTool } from '../components/developer-toolkit/jwt-decoder-tool';
 
 export default function Index() {
-  redirect('/jwt-decode');
+  return <JwtDecoderTool />;
 }
