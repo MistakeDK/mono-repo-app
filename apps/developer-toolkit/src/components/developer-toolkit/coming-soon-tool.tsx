@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Button, Card } from '@mono/ui-components';
 import type { ToolId } from './toolkit-types';
 import { tools } from './toolkit-utils';
@@ -20,7 +21,7 @@ export function ComingSoonTool({ toolId }: { toolId: ToolId }) {
         </p>
         <div>
           <Button asChild variant="outline">
-            <a href="/jwt-decode">Back to JWT Decode</a>
+            <Link href="/jwt-decode">Back to JWT Decode</Link>
           </Button>
         </div>
       </Card>

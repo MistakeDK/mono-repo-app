@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import Link from 'next/link';
 import { ToolNavigation } from './tool-navigation';
 
 export function DeveloperToolkitShell({ children }: { children: ReactNode }) {
@@ -6,9 +7,9 @@ export function DeveloperToolkitShell({ children }: { children: ReactNode }) {
     <div className="bg-background text-foreground">
       <header className="top-0 z-10 sticky bg-background/90 backdrop-blur-xl border-border border-b">
         <div className="flex justify-between items-center gap-6 mx-auto px-6 max-w-310 min-h-12.5">
-          <a className="font-semibold text-sm tracking-normal" href="/">
+          <Link className="font-semibold text-sm tracking-normal" href="/">
             developer-toolkit
-          </a>
+          </Link>
           <span className="hidden before:block sm:inline-flex items-center before:bg-primary before:shadow-lg before:shadow-primary/50 before:mr-2 px-2.5 border border-border rounded-full before:rounded-full min-h-8 before:size-1.5 font-mono text-muted-foreground text-xs">
             client-side &middot; no upload
           </span>

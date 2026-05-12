@@ -9,7 +9,7 @@
       "!{projectRoot}/.eslintrc.json",
       "!{projectRoot}/eslint.config.mjs"
     ],
-    "sharedGlobals": []
+    "sharedGlobals": [{ "env": "NEXT_PUBLIC_BASE_PATH" }]
   },
   "plugins": [
     {

@@ -3,6 +3,8 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { composePlugins, withNx } = require('@nx/next');
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+
 /**
  * @type {import('@nx/next/plugins/with-nx').WithNxOptions}
  **/
@@ -12,6 +14,8 @@ const nextConfig = {
   nx: {},
   allowedDevOrigins: ['*'],
   output: 'export',
+  basePath,
+  assetPrefix: basePath || undefined,
   images: {
     unoptimized: true,
   },
